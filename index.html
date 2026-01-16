@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NationGlory Togo | Serveur Orange</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="hero">
+    <h1>NationGlory Togo 🇹🇬</h1>
+    <p>Serveur Orange • Organisation • Puissance</p>
+    <a href="#recrutement" class="btn-primary">Rejoindre</a>
+  </header>
+
+  <!-- ===== NAV ===== -->
+  <nav class="navbar">
+    <a href="#presentation">Présentation</a>
+    <a href="#objectifs">Objectifs</a>
+    <a href="#recrutement">Recrutement</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ===== PRESENTATION ===== -->
+  <section id="presentation" class="section">
+    <h2>Qui sommes-nous ?</h2>
+    <p>
+      NationGlory Togo est une communauté sérieuse du serveur Orange.
+      Notre objectif est de faire progresser le pays grâce à la
+      stratégie, l’entraide et l’organisation.
+    </p>
+  </section>
+
+  <!-- ===== OBJECTIFS ===== -->
+  <section id="objectifs" class="section section-dark">
+    <h2>Nos objectifs</h2>
+    <ul>
+      <li>Développer l’économie du pays</li>
+      <li>Former les nouveaux joueurs</li>
+      <li>Participer aux guerres</li>
+      <li>Représenter fièrement le Togo 🇹🇬</li>
+    </ul>
+  </section>
+
+  <!-- ===== RECRUTEMENT ===== -->
+  <section id="recrutement" class="section">
+    <h2>Recrutement</h2>
+    <p>Remplis le formulaire pour rejoindre NationGlory Togo.</p>
+
+    <form
+      action="https://formsubmit.co/tonemail@example.com"
+      method="POST"
+      class="recruit-form"
+    >
+      <!-- Anti-spam -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Redirection après envoi -->
+      <input type="hidden" name="_next" value="merci.html">
+
+      <!-- Sujet de l’email -->
+      <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
+
+      <label>Nom en jeu</label>
+      <input type="text" name="Nom en jeu" required>
+
+      <label>Âge</label>
+      <input type="number" name="Âge">
+
+      <label>Niveau / Expérience</label>
+      <textarea name="Expérience" rows="4"></textarea>
+
+      <label>Motivation</label>
+      <textarea name="Motivation" rows="4" required></textarea>
+
+      <button type="submit">Envoyer la candidature</button>
+    </form>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-dark">
+    <h2>Contact</h2>
+    <p>📧 Email : tonemail@example.com</p>
+    <p>💬 Discord : NationGlory Togo</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2026 NationGlory Togo – Serveur Orange</p>
+  </footer>
+
+</body>
+</html>
