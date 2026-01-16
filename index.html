@@ -82,6 +82,39 @@
   <footer>
     <p>© 2026 NationGlory Togo – Serveur Orange</p>
   </footer>
+  <script>
+const webhookURL = "https://discord.com/api/webhooks/ID/TOKEN";
+
+document.getElementById("recruitForm").addEventListener("submit", function () {
+
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const xp = document.getElementById("xp").value;
+  const motivation = document.getElementById("motivation").value;
+
+  const payload = {
+    embeds: [{
+      title: "📥 Nouvelle candidature",
+      color: 8388736, // Bordeaux
+      fields: [
+        { name: "Nom en jeu", value: name, inline: true },
+        { name: "Âge", value: age || "Non précisé", inline: true },
+        { name: "Expérience", value: xp || "Non précisé" },
+        { name: "Motivation", value: motivation }
+      ],
+      footer: { text: "NationGlory Togo – Serveur Orange" },
+      timestamp: new Date()
+    }]
+  };
+
+  fetch(webhookURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+});
+</script>
 
 </body>
 </html>
