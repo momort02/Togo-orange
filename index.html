@@ -50,34 +50,25 @@
     <h2>Recrutement</h2>
     <p>Remplis le formulaire pour nous rejoindre.</p>
 
-    <form
-      action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21"
-      method="POST"
-      class="recruit-form"
-    >
-      <!-- Anti-spam -->
-      <input type="hidden" name="_captcha" value="false">
+    <form action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21" method="POST">
 
-      <!-- Redirection après envoi -->
-      <input type="hidden" name="_next" value="merci.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
 
-      <!-- Sujet de l’email -->
-      <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
+  <label>Nom en jeu</label>
+  <input type="text" name="Nom en jeu" required>
 
-      <label>Nom en jeu</label>
-      <input type="text" name="Nom en jeu" required>
+  <label>Âge</label>
+  <input type="number" name="Âge">
 
-      <label>Âge</label>
-      <input type="number" name="Âge">
+  <label>Expérience</label>
+  <textarea name="Expérience"></textarea>
 
-      <label>Niveau / Expérience</label>
-      <textarea name="Expérience" rows="4"></textarea>
+  <label>Motivation</label>
+  <textarea name="Motivation" required></textarea>
 
-      <label>Motivation</label>
-      <textarea name="Motivation" rows="4" required></textarea>
-
-      <button type="submit">Envoyer la candidature</button>
-    </form>
+  <button type="submit">Envoyer</button>
+</form>
   </section>
 
   <!-- ===== CONTACT ===== -->
