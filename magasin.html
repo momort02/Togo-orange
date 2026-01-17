@@ -45,18 +45,17 @@
     <input type="text" id="name" name="Nom en jeu" required>
 
     <label>Ressource</label>
-    <select id="resource" name="Ressource" required>
-      <option value="">-- Choisir --</option>
-      <option>Argent</option>
-      <option>Nourriture</option>
-      <option>Matériaux</option>
-      <option>Armes</option>
-      <option>Autre</option>
-    </select>
+    <input type="text" id="resource" name="Ressource" required>
 
     <label>Quantité</label>
     <input type="number" id="quantity" name="Quantité" required>
 
+    <label>Unité</label>
+    <select id="unité" name="Unité" required>
+      <option value="">-- Choisir --</option>
+      <option>Item(s)/Bloc(s)</option>
+      <option>Stack(s)</option>
+    </select>
     <label>Moyen de paiement</label>
     <select id="payment" name="Paiement">
       <option>In-game</option>
@@ -103,6 +102,7 @@
     const name = document.getElementById("name").value;
     const resource = document.getElementById("resource").value;
     const quantity = document.getElementById("quantity").value;
+    const unité = document.getElementById("unité").value;
     const payment = document.getElementById("payment").value;
     const details = document.getElementById("details").value;
 
@@ -118,6 +118,7 @@
           { name: "Joueur", value: name, inline: true },
           { name: "Ressource", value: resource, inline: true },
           { name: "Quantité", value: quantity, inline: true },
+          { name: "Unité", value: unité, inline: true },
           { name: "Paiement", value: payment },
           { name: "Détails", value: details || "Aucun" }
         ],
