@@ -50,23 +50,27 @@
     <h2>Recrutement</h2>
     <p>Remplis le formulaire pour nous rejoindre.</p>
 
-    <form class="recruit-form"action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21" method="POST">
+    <form
+  id="recruitForm"
+  class="recruit-form"
+  action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21"
+  method="POST"
+>
 
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
 
   <label>Nom en jeu</label>
-  <input type="text" name="Nom en jeu" required>
+<input type="text" name="Nom en jeu" id="name" required>
 
-  <label>Âge</label>
-  <input type="number" name="Âge">
+<label>Âge</label>
+<input type="number" name="Âge" id="age">
 
-  <label>Expérience</label>
-  <textarea name="Expérience"></textarea>
+<label>Expérience</label>
+<textarea name="Expérience" id="xp"></textarea>
 
-  <label>Motivation</label>
-  <textarea name="Motivation" required></textarea>
-
+<label>Motivation</label>
+<textarea name="Motivation" id="motivation" required></textarea>
   <button type="submit">Envoyer</button>
 </form>
   </section>
