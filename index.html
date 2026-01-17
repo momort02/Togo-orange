@@ -30,7 +30,7 @@
     <p>
       NationGlory Togo est une communauté sérieuse du serveur Orange.
       Notre objectif est de faire progresser le pays grâce à la
-      stratégie, l’entraide et l’organisation.
+      stratégie, l'entraide et l'organisation.
     </p>
   </section>
 
@@ -38,9 +38,9 @@
   <section id="objectifs" class="section section-dark">
     <h2>Nos objectifs</h2>
     <ul>
-      <li>Développer l’économie du pays</li>
+      <li>Développer l'économie du pays</li>
       <li>Former les nouveaux joueurs</li>
-      <li>Se faire un max d’argent</li>
+      <li>Se faire un max d'argent</li>
       <li>Représenter fièrement le Togo 🇹🇬</li>
     </ul>
   </section>
@@ -51,28 +51,29 @@
     <p>Remplis le formulaire pour nous rejoindre.</p>
 
     <form
-  id="recruitForm"
-  class="recruit-form"
-  action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21"
-  method="POST"
->
+      id="recruitForm"
+      class="recruit-form"
+      action="https://formsubmit.co/5bdab29b518a94ea6f805ec3ad2f5f21"
+      method="POST"
+    >
 
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Candidature NationGlory Togo">
 
-  <label>Nom en jeu</label>
-<input type="text" name="Nom en jeu" id="name" required>
+      <label>Nom en jeu</label>
+      <input type="text" name="Nom en jeu" id="name" required>
 
-<label>Âge</label>
-<input type="number" name="Âge" id="age">
+      <label>Âge</label>
+      <input type="number" name="Âge" id="age">
 
-<label>Expérience</label>
-<textarea name="Expérience" id="xp"></textarea>
+      <label>Expérience</label>
+      <textarea name="Expérience" id="xp"></textarea>
 
-<label>Motivation</label>
-<textarea name="Motivation" id="motivation" required></textarea>
-  <button type="submit">Envoyer</button>
-</form>
+      <label>Motivation</label>
+      <textarea name="Motivation" id="motivation" required></textarea>
+      
+      <button type="submit">Envoyer</button>
+    </form>
   </section>
 
   <!-- ===== CONTACT ===== -->
@@ -86,39 +87,55 @@
   <footer>
     <p>© 2026 NationGlory Togo – Serveur Orange</p>
   </footer>
+
   <script>
-const webhookURL = "https://discord.com/api/webhooks/1461967331768139828/93YgueIy9PKIwPmkTJb8Op5ofM5ZnjoUCCjA3Gwug3-YiK8PVNZqVxYcnPEdEhRVfeAn";
+    const webhookURL = "https://discord.com/api/webhooks/1461967331768139828/93YgueIy9PKIwPmkTJb8Op5ofM5ZnjoUCCjA3Gwug3-YiK8PVNZqVxYcnPEdEhRVfeAn";
 
-document.getElementById("recruitForm").addEventListener("submit", function () {
+    document.getElementById("recruitForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Empêche l'envoi immédiat
 
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
-  const xp = document.getElementById("xp").value;
-  const motivation = document.getElementById("motivation").value;
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const xp = document.getElementById("xp").value;
+      const motivation = document.getElementById("motivation").value;
 
-  const payload = {
-    embeds: [{
-      title: "📥 Nouvelle candidature",
-      color: 8388736, // Bordeaux
-      fields: [
-        { name: "Nom en jeu", value: name, inline: true },
-        { name: "Âge", value: age || "Non précisé", inline: true },
-        { name: "Expérience", value: xp || "Non précisé" },
-        { name: "Motivation", value: motivation }
-      ],
-      footer: { text: "NationGlory Togo – Serveur Orange" },
-      timestamp: new Date()
-    }]
-  };
+      const payload = {
+        embeds: [{
+          title: "📥 Nouvelle candidature",
+          color: 8388736, // Bordeaux
+          fields: [
+            { name: "Nom en jeu", value: name, inline: true },
+            { name: "Âge", value: age || "Non précisé", inline: true },
+            { name: "Expérience", value: xp || "Non précisé" },
+            { name: "Motivation", value: motivation }
+          ],
+          footer: { text: "NationGlory Togo – Serveur Orange" },
+          timestamp: new Date()
+        }]
+      };
 
-  fetch(webhookURL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-
-});
-</script>
+      // Envoi vers Discord Webhook
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (response.ok) {
+          // Webhook Discord réussi → on envoie aussi à FormSubmit
+          document.getElementById("recruitForm").submit();
+        } else {
+          alert("❌ Erreur lors de l'envoi vers Discord. Le formulaire sera quand même envoyé.");
+          document.getElementById("recruitForm").submit();
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("❌ Problème de connexion Discord. Le formulaire sera quand même envoyé.");
+        document.getElementById("recruitForm").submit();
+      });
+    });
+  </script>
 
 </body>
 </html>
