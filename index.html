@@ -16,12 +16,20 @@
     <a href="#recrutement" class="btn-primary">Rejoindre</a>
   </header>
 
-  <!-- ===== NAV ===== -->
+  <!-- ===== NAV avec BURGER ===== -->
   <nav class="navbar">
-    <a href="#presentation">Présentation</a>
-    <a href="#objectifs">Objectifs</a>
-    <a href="#recrutement">Recrutement</a>
-    <a href="#contact">Contact</a>
+    <div class="burger-menu" id="burgerMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#presentation">Présentation</a>
+      <a href="#objectifs">Objectifs</a>
+      <a href="#recrutement">Recrutement</a>
+      <a href="magasin.html">🛒 Magasin</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <!-- ===== PRESENTATION ===== -->
@@ -89,10 +97,28 @@
   </footer>
 
   <script>
+    // Menu Burger Toggle
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navLinks = document.getElementById('navLinks');
+
+    burgerMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      burgerMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu au clic sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        burgerMenu.classList.remove('active');
+      });
+    });
+
+    // Webhook Discord
     const webhookURL = "https://discord.com/api/webhooks/1461967331768139828/93YgueIy9PKIwPmkTJb8Op5ofM5ZnjoUCCjA3Gwug3-YiK8PVNZqVxYcnPEdEhRVfeAn";
 
     document.getElementById("recruitForm").addEventListener("submit", function (e) {
-      e.preventDefault(); // Empêche l'envoi immédiat
+      e.preventDefault();
 
       const name = document.getElementById("name").value;
       const age = document.getElementById("age").value;
@@ -102,7 +128,7 @@
       const payload = {
         embeds: [{
           title: "📥 Nouvelle candidature",
-          color: 8388736, // Bordeaux
+          color: 8388736,
           fields: [
             { name: "Nom en jeu", value: name, inline: true },
             { name: "Âge", value: age || "Non précisé", inline: true },
@@ -114,7 +140,6 @@
         }]
       };
 
-      // Envoi vers Discord Webhook
       fetch(webhookURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -122,10 +147,9 @@
       })
       .then(response => {
         if (response.ok) {
-          // Webhook Discord réussi → on envoie aussi à FormSubmit
           document.getElementById("recruitForm").submit();
         } else {
-          alert("❌ Erreur lors de l'envoi vers Discord. Le formulaire sera quand même envoyé.");
+          alert("❌ Erreur Discord. Le formulaire sera quand même envoyé.");
           document.getElementById("recruitForm").submit();
         }
       })
